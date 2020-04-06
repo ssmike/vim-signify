@@ -640,6 +640,7 @@ let s:default_vcs_cmds_diffmode = {
       \ 'accurev':  'accurev cat %f',
       \ 'perforce': 'p4 print %f',
       \ 'tfs':      'tf view -version:W -noprompt %f',
+      \ 'arc':      'arc show trunk:%f',
       \ }
 
 if exists('g:signify_vcs_cmds')
