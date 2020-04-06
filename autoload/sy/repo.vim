@@ -157,6 +157,11 @@ function! s:check_diff_diff(exitval, diff) abort
   return a:exitval <= 1 ? [1, a:diff] : [0, []]
 endfunction
 
+" s:check_diff_arc {{{1
+function! s:check_diff_arc(exitval, diff) abort
+  return a:exitval ? [0, []] : [1, a:diff]
+endfunction
+
 " s:check_diff_git {{{1
 function! s:check_diff_git(exitval, diff) abort
   return a:exitval ? [0, []] : [1, a:diff]
@@ -618,7 +623,8 @@ let s:default_vcs_cmds = {
       \ 'rcs':      'rcsdiff -U0 %f 2>%n',
       \ 'accurev':  'accurev diff %f -- -U0',
       \ 'perforce': 'p4 info '. sy#util#shell_redirect('%n') . (has('win32') ? ' &&' : ' && env P4DIFF= P4COLORS=') .' p4 diff -du0 %f',
-      \ 'tfs':      'tf diff -version:W -noprompt -format:Unified %f'
+      \ 'tfs':      'tf diff -version:W -noprompt -format:Unified %f',
+      \ 'arc':      'arc diff -U0 %f',
       \ }
 
 let s:default_vcs_cmds_diffmode = {
